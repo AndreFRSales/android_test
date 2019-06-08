@@ -16,11 +16,10 @@
 
         <ImageView
                 android:id="@+id/item_movie_image"
-                android:layout_width="112dp"
-                android:layout_height="168dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
+                android:layout_width="@dimen/cover_width"
+                android:layout_height="@dimen/cover_height"
                 android:src="@drawable/cover_placeholder"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/item_movie_image_content_description"
                 app:imageUrl="@{presenter.poster}"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +46,7 @@
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Caption"
                 android:layout_marginTop="@dimen/space_medium"
+                android:layout_marginBottom="@dimen/space_medium"
                 android:text="@{presenter.category}"
                 app:layout_constraintTop_toBottomOf="@+id/item_movie_title"
                 app:layout_constraintStart_toStartOf="@+id/item_movie_guideline_start"

@@ -1,5 +1,6 @@
 package com.vitorprado.wptest
 
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.vitorprado.wptest.values.Category
 import com.vitorprado.wptest.values.Movie
 

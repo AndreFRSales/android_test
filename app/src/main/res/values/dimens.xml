@@ -5,6 +5,7 @@
     <dimen name="space_small">8dp</dimen>
     <dimen name="space_medium">16dp</dimen>
 
-
+    <dimen name="cover_width">112dp</dimen>
+    <dimen name="cover_height">168dp</dimen>
 
 </resources>
