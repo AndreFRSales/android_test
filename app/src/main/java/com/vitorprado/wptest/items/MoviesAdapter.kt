@@ -3,7 +3,6 @@ package com.vitorprado.wptest.items
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.vitorprado.wptest.R
 import com.vitorprado.wptest.databinding.ItemMovieBinding
