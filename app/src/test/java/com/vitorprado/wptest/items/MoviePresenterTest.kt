@@ -23,10 +23,15 @@ object MoviePresenterTest : Spek( {
             }
 
             it("should be the correct category") {
-                presenter.category `should be equal to` "Best movie"
+                presenter.category `should be equal to` "Drama"
+            }
+
+            it("should has url") {
+                presenter.poster `should be equal to` "https://m.media-amazon.com/images/M/MV5BMjJmYTNkNmItYjYyZC00MGUxLWJhNWMtZDY4Nzc1MDAwMzU5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,676,1000_AL_.jpg"
             }
         }
     }
+
 })
 
 fun fightClubMovie() = Movie(

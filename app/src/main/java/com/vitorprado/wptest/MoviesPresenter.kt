@@ -3,9 +3,7 @@ package com.vitorprado.wptest
 import com.vitorprado.wptest.actions.GetMovies
 import com.vitorprado.wptest.values.Category
 import com.vitorprado.wptest.values.Movie
-import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers.io
 
 class MoviesPresenter(
     private val contract: MoviesContract,
@@ -14,6 +12,7 @@ class MoviesPresenter(
 
     private val compositeDisposable by lazy { CompositeDisposable() }
     private var moviesList: List<Movie>? = null
+    private var filteredList: List<Movie>? = null
 
     init {
         fetchMovies()
@@ -41,15 +40,17 @@ class MoviesPresenter(
     }
 
     fun clearFilter() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        filteredList = null
     }
 
     private fun filteredMovies(category: Category): List<Movie> {
-        return listOf()
+        filteredList =  moviesList?.filter { it.category.name.contains(category.name) }
+        return filteredList.orEmpty()
     }
 
     private fun getCategories(movies: List<Movie>): List<Category> {
-        return listOf()
+        val categoriesMap = movies.groupBy { movie -> movie.category }
+        return categoriesMap.keys.toList()
     }
 
     fun onDestroy() {
