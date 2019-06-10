@@ -3,7 +3,9 @@ package com.vitorprado.wptest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.vitorprado.wptest.databinding.ActivityMainBinding
 import com.vitorprado.wptest.items.MoviesAdapter
 import com.vitorprado.wptest.values.Category
@@ -20,8 +22,13 @@ class MainActivity : AppCompatActivity(), MoviesContract {
     }
 
     override fun setupList(movies: List<Movie>) {
-        binding?.list?.layoutManager = LinearLayoutManager(this)
-        binding?.list?.adapter = MoviesAdapter(movies)
+        binding?.list?.let {
+            with(it) {
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
+                adapter = MoviesAdapter(movies)
+            }
+        }
     }
 
     override fun setupCategories(categories: List<Category>) {
