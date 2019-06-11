@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.vitorprado.wptest.R
 import com.vitorprado.wptest.databinding.ItemMovieBinding

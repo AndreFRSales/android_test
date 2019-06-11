@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+                name="categoryPresenter"
+                type="com.vitorprado.wptest.items.CategoriesPresenter"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:orientation="vertical"
+                                                       android:layout_width="wrap_content"
+                                                       android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/spinner_category_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_small"
+                android:layout_marginTop="@dimen/space_small"
+                android:text="@{categoryPresenter.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Drama"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

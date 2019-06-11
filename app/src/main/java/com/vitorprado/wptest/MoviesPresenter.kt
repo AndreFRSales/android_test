@@ -13,6 +13,8 @@ class MoviesPresenter(
     private val compositeDisposable by lazy { CompositeDisposable() }
     private var moviesList: List<Movie>? = null
     private var filteredList: List<Movie>? = null
+    var entryCategory = Category(-1, "All")
+    var categories : List<Category>? = null
 
     init {
         fetchMovies()
@@ -25,7 +27,7 @@ class MoviesPresenter(
                     moviesList = it
                     with(contract) {
                         setupList(it)
-                        setupCategories(getCategories(it))
+                        getCategories(it)
                     }
                 },
                 { /* we will ignore errors */ }
@@ -35,22 +37,40 @@ class MoviesPresenter(
             }
     }
 
-    fun filterMoviesByCategory(category: Category) {
+    private fun filterMoviesByCategory(category: Category) {
         contract.setupList(filteredMovies(category))
     }
 
-    fun clearFilter() {
-        filteredList = null
+
+    fun onChange(category: Category) {
+        filterMoviesByCategory(category)
     }
 
     private fun filteredMovies(category: Category): List<Movie> {
-        filteredList =  moviesList?.filter { it.category.name.contains(category.name) }
-        return filteredList.orEmpty()
+        moviesList?.let {
+            if(category.id == -1L) {
+                return it
+            }
+
+            filteredList = it.filter { movie -> movie.category.name.contains(category.name) }
+            return filteredList.orEmpty()
+        }
+
+        return emptyList()
     }
 
     private fun getCategories(movies: List<Movie>): List<Category> {
         val categoriesMap = movies.groupBy { movie -> movie.category }
-        return categoriesMap.keys.toList()
+        val categoriesArrayList = createCategoriesWithDefaultValue(categoriesMap)
+        categories = categoriesArrayList
+        return categories as List<Category>
+    }
+
+    private fun createCategoriesWithDefaultValue(categoriesMap: Map<Category, List<Movie>>): ArrayList<Category> {
+        val categoriesArrayList = arrayListOf<Category>()
+        categoriesArrayList.add(entryCategory)
+        categoriesArrayList.addAll(categoriesMap.keys.toList())
+        return categoriesArrayList
     }
 
     fun onDestroy() {

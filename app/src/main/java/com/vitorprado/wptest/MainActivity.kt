@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.vitorprado.wptest.databinding.ActivityMainBinding
 import com.vitorprado.wptest.items.MoviesAdapter
-import com.vitorprado.wptest.values.Category
 import com.vitorprado.wptest.values.Movie
 
 class MainActivity : AppCompatActivity(), MoviesContract {
@@ -29,10 +27,6 @@ class MainActivity : AppCompatActivity(), MoviesContract {
                 adapter = MoviesAdapter(movies)
             }
         }
-    }
-
-    override fun setupCategories(categories: List<Category>) {
-        // create selector to filter movies
     }
 
     override fun onDestroy() {
