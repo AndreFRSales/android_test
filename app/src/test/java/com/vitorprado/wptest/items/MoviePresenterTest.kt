@@ -7,7 +7,7 @@ import org.amshove.kluent.`should be`
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-object MoviePresenterTest : Spek( {
+object MoviHUePresenterTest : Spek( {
 
     describe("MoviePresenterTest") {
 

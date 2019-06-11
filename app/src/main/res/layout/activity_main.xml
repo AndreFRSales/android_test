@@ -20,7 +20,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_main_filter_label"
-                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/main_start_guideline"/>
 
@@ -28,7 +27,9 @@
                 android:id="@+id/main_filter_chooser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                app:categories="@{presenter.categories}"
+                app:selectedCategoryAttrChanged="@{(newValue) -> presenter.onChange(newValue)}"
+                app:selectedCategory="@{presenter.entryCategory}"
                 app:layout_constraintTop_toBottomOf="@+id/main_filter_label"
                 app:layout_constraintStart_toStartOf="@+id/main_start_guideline"
                 app:layout_constraintEnd_toEndOf="@+id/main_end_guideline"/>
@@ -36,10 +37,11 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@+id/main_filter_chooser"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/main_start_guideline"
