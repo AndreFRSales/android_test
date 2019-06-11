@@ -1,6 +1,5 @@
 package com.vitorprado.wptest
 
-import androidx.annotation.VisibleForTesting
 import com.vitorprado.wptest.actions.GetMovies
 import com.vitorprado.wptest.values.Category
 import com.vitorprado.wptest.values.Movie
